@@ -1,0 +1,236 @@
+﻿@{
+    ViewBag.Title = "Customer";
+    Layout = "~/Views/MasterPages/_Admin.cshtml";
+}
+<script src="~/Scripts/CustomerAng.js"></script>
+<!--inner block start here-->
+<div class="inner-block">
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Admin")">Dashboard</a></li>
+        <li><a href="@Url.Action("Customer", "Admin")">Customer</a></li>
+    </ol>
+    <div class="typography">
+        <!--bagets-->
+        <div class="typo-badges">
+            <div class="appearance">
+                <div ng-app="App" class="ng-cloak">
+                    <div ng-controller="Ctrl" ng-init="GetCustomers()" class="divList">
+                        <div class="alert alert-info" role="alert" ng-show="divMsgs">
+                            <strong>{{Msg}} </strong>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-3 grid_box1">
+                                    <label for="exampleInputName2">Name<a style="color: red;">*</a></label>
+                                    <input type="text" class="form-control1" maxlength="40" ng-model="txtName" id="txtName" placeholder="Name">
+                                    <div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorName">
+                                        Name is Required.
+                                    </div>
+                                </div>
+                                <div class="col-md-3 grid_box1">
+                                    <label for="exampleInputName2">Pancard<a style="color: red;">*</a></label>
+                                    <input type="text" class="form-control1" maxlength="40" ng-model="txtPancard" id="txtPancard" placeholder="Pancard">
+                                    <div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorPancard">
+                                        Pancard is Required.
+                                    </div>
+                                </div>
+                                <div class="col-md-3 grid_box1">
+                                    <label for="exampleInputName2">Aadhar<a style="color: red;">*</a></label>
+                                    <input type="text" class="form-control1" maxlength="12" numbers-only ng-model="txtAadhar" id="txtAadhar" placeholder="Aadhar No">
+                                    <div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorAadhar">
+                                        Aadhar is Required.
+                                    </div>
+                                </div>
+                                <div class="col-md-3 grid_box1">
+                                    <label for="exampleInputName2">Mobile<a style="color: red;">*</a></label>
+                                    <input type="text" class="form-control1" maxlength="10" numbers_only ng-model="txtMobile" id="txtMobile" placeholder="Mobile No">
+                                    <div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorMobile">
+                                        Mobile is Required.
+                                    </div>
+                                    <div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorMobileLength">
+                                        MobileNo is Invalid.
+                                    </div>
+                                </div>
+                                <div class="col-md-3 grid_box1">
+                                    <label for="exampleInputName2">Email<a style="color: red;">*</a></label>
+                                    <input type="text" class="form-control1" maxlength="40" ng-model="txtEmail" id="txtEmail" placeholder="Email">
+                                    <div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorEmail">
+                                        Email is Required.
+                                    </div>
+                                    <div class="divValidationMessage topMargin" style="display: none; " id="divErrorEmailVal">
+                                        Email is Invalid.
+                                    </div>
+                                </div>
+                                <div class="col-md-3 grid_box1">
+                                    <label for="exampleInputName2">Address</label>
+                                    <input type="text" class="form-control1" maxlength="200" ng-model="txtAddress" id="txtAddress" placeholder="Address">
+                                    @*<div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorAddress">
+                                            Address is Required.
+                                        </div>*@
+                                </div>
+                                <div class="col-md-3 grid_box1">
+                                    <label for="exampleInputName2">Plan<a style="color: red;">*</a></label>
+                                    <select class="form-control1" ng-model="ddlPlans" ng-options=" p.ID as p.NAME for p in Plans">
+                                        <option value="" disabled selected><< Select Plan >></option>
+                                    </select>
+                                    <div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorPlan">
+                                        Plan is Required.
+                                    </div>
+                                </div>
+                                <div class="col-md-3 grid_box1">
+                                    <label for="exampleInputName2">Is Active</label>
+                                    <input type="checkbox" class="checkbox" ng-model="chkIsActive" id="chkIsActive">
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div id="divBtnGroup">
+                                    <div class="col-md-1 grid_box1">
+                                        <input type="submit" id="btnSave" class="btn btn-default" value="Save" ng-click="AddUpdateCustomer()" />
+                                    </div>
+                                    <div class="col-md-1 grid_box1">
+                                        <input type="submit" value="Cancel" class="btn btn-default" ng-click="ClearFields()" />
+                                    </div>
+                                </div>
+                                <img src="@Url.Content("~/Content/Common/")Gif/Loader.gif" id="Loader" style="display:none" />
+                                <div class="clearfix"> </div>
+                            </div>
+                        </div>
+                        <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label>
+                                        Show
+                                        <select name="DataTables_Table_0_length" ng-model="pagesize" aria-controls="DataTables_Table_0" class="form-control input-sm">
+                                            <option value="5">05</option>
+                                            <option value="10">10</option>
+                                            <option value="25">25</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                        </select>
+                                        entries
+                                    </label>
+                                </div>
+                                <div class="col-sm-6" style="text-align: right;">
+                                    <label>
+                                        Search
+                                        <input type="search" class="form-control input-sm" ng-model="search" placeholder="Search.." aria-controls="DataTables_Table_0">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="table-responsive">
+                                        <table class="table  table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        <a href="#" ng-click="sort('NAME')">
+                                                            Name
+                                                            <span ng-show="sortKey == 'NAME' && !sortReverse" class="fa fa-caret-down"></span>
+                                                            <span ng-show="sortKey == 'NAME' && sortReverse" class="fa fa-caret-up"></span>
+                                                        </a>
+                                                    </th>
+                                                    <th>
+                                                        <a href="#" ng-click="sort('PANCARD')">
+                                                            Pancard
+                                                            <span ng-show="sortKey == 'PANCARD' && !sortReverse" class="fa fa-caret-down"></span>
+                                                            <span ng-show="sortKey == 'PANCARD' && sortReverse" class="fa fa-caret-up"></span>
+                                                        </a>
+                                                    </th>
+                                                    <th>
+                                                        <a href="#" ng-click="sort('AADHAR')">
+                                                            Aadhar
+                                                            <span ng-show="sortKey == 'AADHAR' && !sortReverse" class="fa fa-caret-down"></span>
+                                                            <span ng-show="sortKey == 'AADHAR' && sortReverse" class="fa fa-caret-up"></span>
+                                                        </a>
+                                                    </th>
+                                                    <th>
+                                                        <a href="#" ng-click="sort('MOBILE')">
+                                                            Mobile
+                                                            <span ng-show="sortKey == 'MOBILE' && !sortReverse" class="fa fa-caret-down"></span>
+                                                            <span ng-show="sortKey == 'MOBILE' && sortReverse" class="fa fa-caret-up"></span>
+                                                        </a>
+                                                    </th>
+                                                    <th>
+                                                        <a href="#" ng-click="sort('EMAIL')">
+                                                            Email
+                                                            <span ng-show="sortKey == 'EMAIL' && !sortReverse" class="fa fa-caret-down"></span>
+                                                            <span ng-show="sortKey == 'EMAIL' && sortReverse" class="fa fa-caret-up"></span>
+                                                        </a>
+                                                    </th>
+                                                    <th>
+                                                        <a href="#" ng-click="sort('PLAN_NAME')">
+                                                            Plan Name
+                                                            <span ng-show="sortKey == 'PLAN_NAME' && !sortReverse" class="fa fa-caret-down"></span>
+                                                            <span ng-show="sortKey == 'PLAN_NAME' && sortReverse" class="fa fa-caret-up"></span>
+                                                        </a>
+                                                    </th>
+                                                    <th style="text-align:center;">
+                                                        <a href="#" ng-click="sort('ISACTIVE')">
+                                                            Status <span ng-show="sortKey == 'ISACTIVE' && !sortReverse" class="fa fa-caret-down"></span>
+                                                            <span ng-show="sortKey == 'ISACTIVE' && sortReverse" class="fa fa-caret-up"></span>
+                                                        </a>
+                                                    </th>
+                                                    <th style="text-align:center;"><a>Action</a></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr dir-paginate="c in Customers|orderBy:sortKey:sortReverse|filter:search|itemsPerPage:pagesize">
+                                                    <td>
+                                                        {{c.NAME}}
+                                                    </td>
+                                                    <td>
+                                                        {{c.PANCARD}}
+                                                    </td>
+                                                    <td>
+                                                        {{c.AADHAR}}
+                                                    </td>
+                                                    <td>
+                                                        {{c.MOBILE}}
+                                                    </td>
+                                                    <td>
+                                                        {{c.EMAIL}}
+                                                    </td>
+                                                    <td>
+                                                        {{c.PLAN_NAME}}
+                                                    </td>
+                                                    <td align="center">
+                                                        <span ng-if="c.ISACTIVE === 1"><i class="fa fa-check" style="color:green;" aria-hidden="true"></i></span>
+                                                        <span ng-if="c.ISACTIVE === 0"><i class="fa fa-check" style="color:red;" aria-hidden="true"></i></span>
+                                                    </td>
+                                                    <td align="center">
+                                                        <a href=""><i class="fa fa-pencil-square-o" aria-hidden="true" ng-click="Edit(c)"></i></a>
+                                                        <a href=""><i class="fa fa-trash-o" aria-hidden="true" ng-click="Delete(c)"></i></a>
+                                                        @* <a href="~/Reports/Viewer/Report.aspx?ID={{c.ID}}&TaxDepartment=true"><i class="fa fa-download" aria-hidden="true"></i></a>*@
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">
+                                        Total Records : <a>{{Customers.length}}</a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6" style="text-align: right;">
+                                    <div class="dataTables_paginate paging_simple_numbers">
+                                        <dir-pagination-controls max-size="10" direction-links="true" boundary-links="true"></dir-pagination-controls>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @Html.Hidden("ID")
+                </div>
+            </div>
+        </div>
+        <!--bagets-->
+    </div>
+</div>
+<!--inner block end here-->

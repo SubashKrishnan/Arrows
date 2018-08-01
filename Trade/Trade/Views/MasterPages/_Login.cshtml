@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Arrows</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Stock Orion Login" />
+    <script type="application/x-javascript">
+         addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+        function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Meta tag Keywords -->
+    <link rel="shortcut icon" href="@Url.Content("~/Content/Common/")favicon.ico" type="image/x-icon">
+    <link rel="icon" href="@Url.Content("~/Content/Common/")favicon.ico" type="image/x-icon">
+    <!-- css files -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/Login/")css/style.css" type="text/css" media="all" /> <!-- Style-CSS -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/Login/")css/font-awesome.css"> <!-- Font-Awesome-Icons-CSS -->
+    <!-- //css files -->
+    <!--Google Fonts-->
+    <link href='//fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Work+Sans:400,500,600' rel='stylesheet' type='text/css'>
+    <!-- js-->
+    <script src="@Url.Content("~/Content/Admin/")js/jquery-2.1.1.min.js"></script>
+    <!-- js for Loader & Hash -->
+    <script src="@Url.Content("~/Content/Common/")js/LoaderHash.js"></script>
+    <!-- js for Login -->
+    <script src="@Url.Content("~/Scripts/")Login.js"></script>
+</head>
+<body onload="changeHashOnLoad();">
+    <!-- wpf loader Two -->
+    <div id="wpf-loader-two">
+        <div class="wpf-loader-two-inner">
+            <span>Loading</span>
+        </div>
+    </div>
+    <!-- / wpf loader Two -->
+    <!-- main -->
+    <div class="center-container">
+        <!--header-->
+        <div class="header-w3l">
+            <h1>Arrows</h1>
+        </div>
+        <!--//header-->
+        <div class="main-content-agile">
+            <div class="sub-main-w3">
+                <div class="wthree-pro">
+                    <h2>Login</h2>
+                </div>
+                <form action="#" method="post">
+                    <div class="sub-w3l" style="display: none; color:#fff" id="divErrorLogin">
+                        <h6>Check UserName or Password.</h6>
+                    </div>
+                    <div class="pom-agile">
+                        <input placeholder="UserName" id="txtLogUserName" maxlength="40" onblur="ValLog();" class="user" type="text">
+                        <span class="icon1"><i class="fa fa-user" aria-hidden="true"></i></span>
+                        <div class="divValidationMessage topMargin" style="display: none;color: red;" id="divErrorLogUserName">
+                            User Name is Required.
+                        </div>
+                    </div>
+                    <div class="pom-agile">
+                        <input placeholder="Password" id="txtLogPassword" maxlength="40" class="pass" onchange="ValLog();" type="password" required="">
+                        <span class="icon2"><i class="fa fa-unlock" aria-hidden="true"></i></span>
+                        <div class="divValidationMessage topMargin" style="display:none; color: red;" id="divErrorLogPassword">
+                            Password is Required.
+                        </div>
+                    </div>
+                    <div class="sub-w3l">
+                        <h6><a href="#">Forgot Password?</a></h6>
+                        <div class="right-w3l">
+                            <img src="@Url.Content("~/Content/Common/")Gif/Eclipse.gif" id="Loader" style="display:none" />
+                            <input type="button" id="btnLogin" value="Login">
+                        </div>
+                    </div>
+                    @Html.Hidden("RedirectTo", Url.Action("Index", "Admin"))
+                </form>
+            </div>
+        </div>
+        <!--//main-->
+        <div>
+            @RenderBody()
+        </div>
+        <!--footer-->
+        <div class="footer">
+            <p>&copy; 2018 Stock Orion. All Rights Reserved | Developed by <a href="http://subashkrishnan.uno/" target="_blank">SUBASH KRISHNAN</a></p>
+        </div>
+        <!--//footer-->
+    </div>
+</body>
+</html>
