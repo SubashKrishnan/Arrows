@@ -13,11 +13,7 @@ namespace DataBaseClass
 {
     public class DBConfiguration
     {
-        public SqlConnection connection = new SqlConnection();
-        public int[] status = new int[51];
-        public string[] actype = new string[51];
-        public int level;
-        public SqlCommand cmd = new SqlCommand();
+        private readonly SqlConnection connection = new SqlConnection();
         public object Con()
         {
             try
@@ -29,7 +25,6 @@ namespace DataBaseClass
             }
             catch (Exception)
             {
-                //ExceptionHandling.GlobalErrorHandlingDB(ex)
                 return -1;
             }
         }
@@ -47,18 +42,15 @@ namespace DataBaseClass
                 }
                 return result;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //ExceptionHandling.GlobalErrorHandlingDB(ex)
+                throw ex;
             }
             finally
             {
                 connection.Close();
             }
-            //INSTANT C# NOTE: Inserted the following 'return' since all code paths must return a value in C#:
-            return false;
         }
-        //Function Execute Query - Pass Qry and table Returns Data set
         public DataSet Execute_Query(string Qry, string table)
         {
             DataSet ds = new DataSet();
@@ -73,7 +65,6 @@ namespace DataBaseClass
             }
             catch (Exception)
             {
-                //ExceptionHandling.GlobalErrorHandlingDB(ex)
                 return ds;
             }
             finally
@@ -81,12 +72,10 @@ namespace DataBaseClass
                 connection.Close();
             }
         }
-        //Function Execute Non Procedure - Pass Procedure Name, Values Returns Boolean
         public bool Execute_NQProcdure(string ProcName, ArrayList ProcParamValues, ArrayList parameter)
         {
             int i;
             int j;
-            i = ProcParamValues.Count;
             i = parameter.Count;
             try
             {
@@ -109,16 +98,14 @@ namespace DataBaseClass
                 }
                 return Convert.ToBoolean(COM.ExecuteNonQuery());
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //ExceptionHandling.GlobalErrorHandlingDB(ex)
+                throw ex;
             }
             finally
             {
                 connection.Close();
             }
-            //INSTANT C# NOTE: Inserted the following 'return' since all code paths must return a value in C#:
-            return false;
         }
         public DataSet Execute_Query1(string Qry)
         {
@@ -134,7 +121,6 @@ namespace DataBaseClass
             }
             catch (Exception)
             {
-                //ExceptionHandling.GlobalErrorHandlingDB(ex);
                 return ds;
             }
             finally
@@ -155,18 +141,15 @@ namespace DataBaseClass
                 }
                 return Convert.ToBoolean(COM.ExecuteNonQuery());
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // ExceptionHandling.GlobalErrorHandlingDB(ex)
+                throw ex;
             }
             finally
             {
                 connection.Close();
             }
-            //INSTANT C# NOTE: Inserted the following 'return' since all code paths must return a value in C#:
-            return false;
         }
-        //Function Execute Query - Pass Qry and table Returns Data set
         public DataTable Execute_Query_DataTable(string Qry, string table)
         {
             DataTable dt = new DataTable();
@@ -181,7 +164,6 @@ namespace DataBaseClass
             }
             catch (Exception)
             {
-                // ExceptionHandling.GlobalErrorHandlingDB(ex)
                 return dt;
             }
             finally

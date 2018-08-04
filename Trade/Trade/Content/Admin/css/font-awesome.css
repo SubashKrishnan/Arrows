@@ -702,6 +702,9 @@
 .fa-users:before {
   content: "\f0c0";
 }
+.fa-users-cog:before {
+    content: "\f509";
+}
 .fa-chain:before,
 .fa-link:before {
   content: "\f0c1";

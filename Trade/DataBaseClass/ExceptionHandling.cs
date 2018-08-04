@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-using System.Configuration;
-using System.Collections;
-using DataBaseClass;
 using System.Data;
 using System.Data.SqlClient;
 namespace DataBaseClass
@@ -28,7 +20,6 @@ namespace DataBaseClass
         public string ExceptionIds { get; set; }
         public string ClassName { get; set; }
         public string MethodName { get; set; }
-        // Added by Manmeet
         public String ExceptionText { get; set; }
         public String CustomMessage { get; set; }
         public int EmployeeID { get; set; }
@@ -78,20 +69,6 @@ namespace DataBaseClass
                 ExceptionHandling.CatchAndLogError(exx, "Error while trying to CatchAndLogError(Exception ex, String sMessage, String sPageName, String sUserName, String sClassName, String sMethodName)", "CatchAndLogError(Exception ex, String sMessage, String sPageName, String sUserName, String sClassName, String sMethodName).cs", Global.StrLoginName, "CatchAndLogError(Exception ex, String sMessage, String sPageName, String sUserName, String sClassName, String sMethodName).cs", "CatchAndLogError(Exception ex, String sMessage, String sPageName, String sUserName, String sClassName, String sMethodName)");
             }
         }
-         //public string  InsertException(Exception ex, string sMessage, string sPageName, string sUserName, string sClassName, string sMethodName)
-         //{
-         //    string EN = "";
-         //    DataSet ds = new DataSet();
-         //    try
-         //    {
-         //        ds = dbcon.Execute_Query(" select EnquiryNo  ", "EnquiryMaster");
-         //    }
-         //    catch (Exception ex)
-         //    {
-         //        throw ex;
-         //    }
-         //    return EN;
-         //}
         #endregion
     }
 }

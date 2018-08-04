@@ -1,16 +1,16 @@
 ﻿using System.Data;
 using System.Web.Http;
+using Trade.ApiAuth;
 using Trade.Models;
 namespace Trade.APIControllers
 {
-    public class CustomerAPIController : ApiController
+    public class CustomerApiController : ApiController
     {
         #region  Declarations
-        private CustomerModel obj = new CustomerModel();
-        private DataTable dt = new DataTable();
+        private readonly CustomerModel obj = new CustomerModel();
         #endregion
         #region  Methods
-        //[Route("CustomerAPI/AddUpdateCustomer")]
+        [Route("api/CustomerApi/AddUpdateCustomer")]
         [HttpPost]
         public string AddUpdateCustomer(CustomerModel c)
         {
@@ -25,7 +25,6 @@ namespace Trade.APIControllers
                 obj.StrCustomerMobile = c.StrCustomerMobile;
                 obj.StrCustomerEmail = c.StrCustomerEmail;
                 obj.StrCustomerAddress = c.StrCustomerAddress;
-                obj.IntCustomerPlanID = c.IntCustomerPlanID;
                 obj.IntCustomerIsActive = c.IntCustomerIsActive;
                 obj.IntMode = c.IntMode;
                 IntCustomerStatus = obj.AddUpdateCustomer();
@@ -44,18 +43,13 @@ namespace Trade.APIControllers
             }
             return strStatus;
         }
-        //[Route("CustomerAPI/GetCustomers")]
-        //[HttpGet]
+        [Route("api/CustomerApi/GetCustomers")]
+        [HttpGet]
+        [CompressFilter]
         public DataTable GetCustomers()
         {
+            DataTable dt = new DataTable();
             dt = obj.GetCustomers();
-            return dt;
-        }
-        //[Route("CustomerAPI/GetPlans")]
-        //[HttpGet]
-        public DataTable GetPlans()
-        {
-            dt = obj.GetPlans();
             return dt;
         }
         #endregion

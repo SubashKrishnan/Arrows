@@ -18,7 +18,6 @@ app.controller("Ctrl", function ($scope, $http, $timeout) {
         $scope.c.StrCustomerMobile = $scope.txtMobile;
         $scope.c.StrCustomerEmail = $scope.txtEmail;
         $scope.c.StrCustomerAddress = $scope.txtAddress;
-        $scope.c.IntCustomerPlanID = $scope.ddlPlans;
         $scope.c.intMode = 1;
         if ($scope.chkIsActive === true ? $scope.c.IntCustomerIsActive = 1 : $scope.c.IntCustomerIsActive = 0);
         $http({
@@ -38,7 +37,6 @@ app.controller("Ctrl", function ($scope, $http, $timeout) {
     };
     $scope.GetCustomers = function () {
         $('#Loader').show();
-        $scope.GetPlans();
         $http({
             method: "get",
             url: "/api/CustomerAPI/GetCustomers"
@@ -48,14 +46,6 @@ app.controller("Ctrl", function ($scope, $http, $timeout) {
         $scope.sortKey = 'ID';
         $scope.sortReverse = true;
         $('#Loader').hide();
-    };
-    $scope.GetPlans = function () {
-        $http({
-            method: "get",
-            url: "/api/CustomerAPI/GetPlans"
-        }).then(function (response) {
-            $scope.Plans = response.data;
-        });
     };
     $scope.Delete = function (c) {
         var Delete = confirm('Are you sure you want to delete this ?');
@@ -83,7 +73,6 @@ app.controller("Ctrl", function ($scope, $http, $timeout) {
         $scope.txtMobile = c.MOBILE;
         $scope.txtEmail = c.EMAIL;
         $scope.txtAddress = c.ADDRESS;
-        $scope.ddlPlans = c.PLAN_ID;
         if (c.ISACTIVE === 1 ? $scope.chkIsActive = true : $scope.chkIsActive = false);
         document.getElementById("btnSave").setAttribute("value", "Update");
     };
@@ -98,13 +87,12 @@ app.controller("Ctrl", function ($scope, $http, $timeout) {
         $scope.txtMobile = "";
         $scope.txtEmail = "";
         $scope.txtAddress = "";
-        $scope.ddlPlans = "";
         $scope.chkIsActive = false;
         document.getElementById("ID").value = 0;
         document.getElementById("btnSave").setAttribute("value", "Save");
     };
     $scope.Validations = function () {
-        if ($scope.txtName === "" | $scope.txtName === undefined) {
+        if ($scope.txtName === "" || $scope.txtName === undefined) {
             $("#divErrorName").css("display", "block");
             $("#txtName").focus();
             return false;
@@ -112,7 +100,7 @@ app.controller("Ctrl", function ($scope, $http, $timeout) {
         else {
             $("#divErrorName").css("display", "none");
         }
-        if ($scope.txtPancard === "" | $scope.txtPancard === undefined) {
+        if ($scope.txtPancard === "" || $scope.txtPancard === undefined) {
             $("#divErrorPancard").css("display", "block");
             $("#txtPancard").focus();
             return false;
@@ -120,7 +108,7 @@ app.controller("Ctrl", function ($scope, $http, $timeout) {
         else {
             $("#divErrorPancard").css("display", "none");
         }
-        if ($scope.txtAadhar === "" | $scope.txtAadhar === undefined) {
+        if ($scope.txtAadhar === "" || $scope.txtAadhar === undefined) {
             $("#divErrorAadhar").css("display", "block");
             $("#txtAadhar").focus();
             return false;
@@ -155,7 +143,7 @@ app.controller("Ctrl", function ($scope, $http, $timeout) {
         else {
             $("#divErrorEmail").css("display", "none");
         }
-        if (/^\w+[\+\.\w-]*@([\w-]+\.)*\w+[\w-]*\.([a-z]{2,4}|\d+)$/i.test($scope.txtEmail)) {
+        if (/^\w+[\+\.\w-]*@([\w-]+\.)*\w+[\w-]*\.([a-z]{2,4}||\d+)$/i.test($scope.txtEmail)) {
             $("#divErrorEmailVal").css("display", "none");
         }
         else {
@@ -163,14 +151,6 @@ app.controller("Ctrl", function ($scope, $http, $timeout) {
             $("#divErrorEmailVal").css("display", "block");
             $("#txtEmail").focus();
             return false;
-        }
-        if ($scope.ddlPlans === "" | $scope.ddlPlans === undefined) {
-            $("#divErrorPlan").css("display", "block");
-            $("#ddlPlans").focus();
-            return false;
-        }
-        else {
-            $("#divErrorPlan").css("display", "none");
         }
         return true;
     };

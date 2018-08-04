@@ -31,7 +31,6 @@ namespace Trade.Controllers
         {
             try
             {
-                //System.Threading.Thread.Sleep(1);
                 objClass.StrLogUserName = Login.StrLogUserName.Trim();
                 objClass.StrLogPassword = Login.StrLogPassword.Trim();
                 objClass.StrUserAgent = Request.UserAgent;

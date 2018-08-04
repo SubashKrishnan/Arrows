@@ -176,96 +176,22 @@
     <Content Include="Content\Login\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Login\images\1.jpg" />
     <Content Include="Global.asax" />
-    <Content Include="App_Data\Html\Admin\404.html" />
-    <Content Include="App_Data\Html\Admin\blank.html" />
-    <Content Include="App_Data\Html\Admin\buttons.html" />
-    <Content Include="App_Data\Html\Admin\charts.html" />
-    <Content Include="App_Data\Html\Admin\css\bootstrap.css" />
-    <Content Include="App_Data\Html\Admin\css\demo-page.css" />
-    <Content Include="App_Data\Html\Admin\css\examples.css" />
-    <Content Include="App_Data\Html\Admin\css\font-awesome.css" />
-    <Content Include="App_Data\Html\Admin\css\geochart.css" />
-    <Content Include="App_Data\Html\Admin\css\hover.css" />
-    <Content Include="App_Data\Html\Admin\css\magnific-popup.css" />
-    <Content Include="App_Data\Html\Admin\css\style.css" />
-    <Content Include="App_Data\Html\Admin\fonts\fontawesome-webfont.svg" />
-    <Content Include="App_Data\Html\Admin\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="App_Data\Html\Admin\grids.html" />
-    <Content Include="App_Data\Html\Admin\icons.html" />
-    <Content Include="App_Data\Html\Admin\images\1.jpg" />
-    <Content Include="App_Data\Html\Admin\images\404.png" />
-    <Content Include="App_Data\Html\Admin\images\b3.png" />
-    <Content Include="App_Data\Html\Admin\images\climate.jpg" />
-    <Content Include="App_Data\Html\Admin\images\close.png" />
-    <Content Include="App_Data\Html\Admin\images\ftr-icons.png" />
-    <Content Include="App_Data\Html\Admin\images\icon.png" />
-    <Content Include="App_Data\Html\Admin\images\login.jpg" />
-    <Content Include="App_Data\Html\Admin\images\mess.png" />
-    <Content Include="App_Data\Html\Admin\images\next.png" />
-    <Content Include="App_Data\Html\Admin\images\p1.png" />
-    <Content Include="App_Data\Html\Admin\images\p2.png" />
-    <Content Include="App_Data\Html\Admin\images\p3.png" />
-    <Content Include="App_Data\Html\Admin\images\p4.png" />
-    <Content Include="App_Data\Html\Admin\images\p5.png" />
-    <Content Include="App_Data\Html\Admin\images\p6.png" />
-    <Content Include="App_Data\Html\Admin\images\p7.png" />
-    <Content Include="App_Data\Html\Admin\images\p8.png" />
-    <Content Include="App_Data\Html\Admin\images\prev.png" />
-    <Content Include="App_Data\Html\Admin\images\pro1.jpg" />
-    <Content Include="App_Data\Html\Admin\images\pro10.jpg" />
-    <Content Include="App_Data\Html\Admin\images\pro12.jpg" />
-    <Content Include="App_Data\Html\Admin\images\pro2.jpg" />
-    <Content Include="App_Data\Html\Admin\images\pro3.jpg" />
-    <Content Include="App_Data\Html\Admin\images\pro4.jpg" />
-    <Content Include="App_Data\Html\Admin\images\pro5.jpg" />
-    <Content Include="App_Data\Html\Admin\images\pro6.jpg" />
-    <Content Include="App_Data\Html\Admin\images\pro7.jpg" />
-    <Content Include="App_Data\Html\Admin\images\pro8.jpg" />
-    <Content Include="App_Data\Html\Admin\images\pro9.jpg" />
-    <Content Include="App_Data\Html\Admin\images\reg.png" />
-    <Content Include="App_Data\Html\Admin\images\search.png" />
-    <Content Include="App_Data\Html\Admin\images\shoppy.jpg" />
-    <Content Include="App_Data\Html\Admin\images\tick.png" />
-    <Content Include="App_Data\Html\Admin\images\visit.png" />
-    <Content Include="App_Data\Html\Admin\inbox-details.html" />
-    <Content Include="App_Data\Html\Admin\inbox.html" />
-    <Content Include="App_Data\Html\Admin\index.html" />
-    <Content Include="App_Data\Html\Admin\js\bars.js" />
-    <Content Include="App_Data\Html\Admin\js\bootstrap.js" />
-    <Content Include="App_Data\Html\Admin\js\Chart.min.js" />
-    <Content Include="App_Data\Html\Admin\js\chartinator.js" />
-    <Content Include="App_Data\Html\Admin\js\gmaps.js" />
-    <Content Include="App_Data\Html\Admin\js\jquery-2.1.1.min.js" />
-    <Content Include="App_Data\Html\Admin\js\jquery.magnific-popup.js" />
-    <Content Include="App_Data\Html\Admin\js\jquery.nicescroll.js" />
-    <Content Include="App_Data\Html\Admin\js\modernizr.min.js" />
-    <Content Include="App_Data\Html\Admin\js\nivo-lightbox.min.js" />
-    <Content Include="App_Data\Html\Admin\js\scripts.js" />
-    <Content Include="App_Data\Html\Admin\js\skycons.js" />
-    <Content Include="App_Data\Html\Admin\login.html" />
-    <Content Include="App_Data\Html\Admin\maps.html" />
-    <Content Include="App_Data\Html\Admin\portlet.html" />
-    <Content Include="App_Data\Html\Admin\price.html" />
-    <Content Include="App_Data\Html\Admin\product.html" />
-    <Content Include="App_Data\Html\Admin\signup.html" />
-    <Content Include="App_Data\Html\Admin\typography.html" />
-    <Content Include="App_Data\Html\Login\css\font-awesome.css" />
-    <Content Include="App_Data\Html\Login\css\style.css" />
-    <Content Include="App_Data\Html\Login\fonts\fontawesome-webfont.svg" />
-    <Content Include="App_Data\Html\Login\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="App_Data\Html\Login\images\1.jpg" />
-    <Content Include="App_Data\Html\Login\index.html" />
     <Content Include="Content\Common\js\LoaderHash.js" />
+    <Content Include="Scripts\ClientAng.js" />
     <Content Include="Scripts\CustomerAng.js" />
     <Content Include="Scripts\Login.js" />
+    <Content Include="Scripts\TradeAng.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiAuth\APIAuthentication.cs" />
+    <Compile Include="ApiAuth\ApiAuthentication.cs" />
     <Compile Include="ApiAuth\ApiSecurity.cs" />
     <Compile Include="ApiAuth\CacheFilter.cs" />
-    <Compile Include="ApiAuth\DeflateCompression.cs" />
-    <Compile Include="APIControllers\CustomerAPIController.cs" />
+    <Compile Include="ApiAuth\CompressedContent.cs" />
+    <Compile Include="ApiAuth\CompressFilter.cs" />
+    <Compile Include="APIControllers\ClientApiController.cs" />
+    <Compile Include="APIControllers\CustomerApiController.cs" />
+    <Compile Include="APIControllers\TradeApiController.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
@@ -273,23 +199,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ClientModel.cs" />
     <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\TradeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ApiAuth\SessionControllerHandler.cs" />
     <Compile Include="ApiAuth\SessionHttpControllerRouteHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <Content Include="App_Data\Html\Admin\fonts\fontawesome-webfont.eot" />
-    <Content Include="App_Data\Html\Admin\fonts\fontawesome-webfont.ttf" />
-    <Content Include="App_Data\Html\Admin\fonts\fontawesome-webfont.woff" />
-    <Content Include="App_Data\Html\Admin\fonts\fontawesome-webfont.woff2" />
-    <Content Include="App_Data\Html\Admin\fonts\FontAwesome.otf" />
-    <Content Include="App_Data\Html\Admin\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="App_Data\Html\Admin\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="App_Data\Html\Admin\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="App_Data\Html\Admin\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\Admin\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\Admin\fonts\fontawesome-webfont.ttf" />
     <Content Include="Content\Admin\fonts\fontawesome-webfont.woff" />
@@ -299,15 +218,6 @@
     <Content Include="Content\Admin\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\Admin\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\Admin\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="App_Data\Html\Login\fonts\fontawesome-webfont.eot" />
-    <Content Include="App_Data\Html\Login\fonts\fontawesome-webfont.ttf" />
-    <Content Include="App_Data\Html\Login\fonts\fontawesome-webfont.woff" />
-    <Content Include="App_Data\Html\Login\fonts\fontawesome-webfont.woff2" />
-    <Content Include="App_Data\Html\Login\fonts\FontAwesome.otf" />
-    <Content Include="App_Data\Html\Login\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="App_Data\Html\Login\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="App_Data\Html\Login\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="App_Data\Html\Login\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\Login\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\Login\fonts\fontawesome-webfont.ttf" />
     <Content Include="Content\Login\fonts\fontawesome-webfont.woff" />
@@ -325,6 +235,8 @@
     <None Include="Properties\PublishProfiles\Somee FTP.pubxml" />
     <None Include="Properties\PublishProfiles\Trade_Folder_Publish.pubxml" />
     <Content Include="Views\Admin\Customer.cshtml" />
+    <Content Include="Views\Admin\Client.cshtml" />
+    <Content Include="Views\Admin\Trade.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -332,7 +244,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataBaseClass\DataBaseClass.csproj">
       <Project>{c36f6a49-dac1-4299-ad71-1729c54de53f}</Project>

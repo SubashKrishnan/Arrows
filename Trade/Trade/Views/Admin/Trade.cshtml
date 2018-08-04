@@ -1,0 +1,165 @@
+﻿
+@{
+    ViewBag.Title = "Trade";
+    Layout = "~/Views/MasterPages/_Admin.cshtml";
+}
+<script src="~/Scripts/TradeAng.js"></script>
+<!--inner block start here-->
+<div class="inner-block">
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Admin")">Dashboard</a></li>
+        <li><a href="@Url.Action("Trade", "Admin")">Trade</a></li>
+    </ol>
+    <div class="typography">
+        <!--bagets-->
+        <div class="typo-badges">
+            <div class="appearance">
+                <div ng-app="App" class="ng-cloak">
+                    <div ng-controller="Ctrl" ng-init="GetTrades()" class="divList">
+                        <div class="alert alert-info" role="alert" ng-show="divMsgs">
+                            <strong>{{Msg}} </strong>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2 grid_box1">
+                                    <label for="exampleInputName2">Date<a style="color: red;">*</a></label>
+                                    <input type="text" date-time-picker class="form-control1" ng-change="GetTrades()" maxlength="11" {{txtDate}} ng-model="txtDate" id="txtDate" placeholder="Date">
+                                    <div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorDate">
+                                        Date is Required.
+                                    </div>
+                                </div>
+                                <img src="@Url.Content("~/Content/Common/")Gif/Loader.gif" id="Loader" style="display:none;" />
+                                <div class="clearfix"> </div>
+                            </div>
+                            </div>
+                        <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label>
+                                        Show
+                                        <select name="DataTables_Table_0_length" ng-model="pagesize" aria-controls="DataTables_Table_0" class="form-control input-sm">
+                                            <option value="5">05</option>
+                                            <option value="10">10</option>
+                                            <option value="25">25</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                        </select>
+                                        entries
+                                    </label>
+                                </div>
+                                <div class="col-sm-6" style="text-align: right;">
+                                    <label>
+                                        Search
+                                        <input type="search" class="form-control input-sm" ng-model="search" placeholder="Search.." aria-controls="DataTables_Table_0">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="table-responsive">
+                                        <table class="table  table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        <a href="#" ng-click="sort('CLIENT_CODE')">
+                                                            Client Code
+                                                            <span ng-show="sortKey == 'CLIENT_CODE' && !sortReverse" class="fa fa-caret-down"></span>
+                                                            <span ng-show="sortKey == 'CLIENT_CODE' && sortReverse" class="fa fa-caret-up"></span>
+                                                        </a>
+                                                    </th>
+                                                    <th>
+                                                        <a href="#" ng-click="sort('CUSTOMER_NAME')">
+                                                            Customer Name
+                                                            <span ng-show="sortKey == 'CUSTOMER_NAME' && !sortReverse" class="fa fa-caret-down"></span>
+                                                            <span ng-show="sortKey == 'CUSTOMER_NAME' && sortReverse" class="fa fa-caret-up"></span>
+                                                        </a>
+                                                    </th>
+                                                    <th>
+                                                        <a href="#" ng-click="sort('INVESTMENT_AMOUNT')">
+                                                            Investment
+                                                            <span ng-show="sortKey == 'INVESTMENT_AMOUNT' && !sortReverse" class="fa fa-caret-down"></span>
+                                                            <span ng-show="sortKey == 'INVESTMENT_AMOUNT' && sortReverse" class="fa fa-caret-up"></span>
+                                                        </a>
+                                                    </th>
+                                                    <th>
+                                                        <a href="#" ng-click="sort('PLAN_NAME')">
+                                                            Plan Name
+                                                            <span ng-show="sortKey == 'PLAN_NAME' && !sortReverse" class="fa fa-caret-down"></span>
+                                                            <span ng-show="sortKey == 'PLAN_NAME' && sortReverse" class="fa fa-caret-up"></span>
+                                                        </a>
+                                                    </th>
+                                                    <th>
+                                                        <a href="#" ng-click="sort('PROFIT_LOSS')">
+                                                            Profit/Loss(Month)
+                                                            <span ng-show="sortKey == 'PROFIT_LOSS' && !sortReverse" class="fa fa-caret-down"></span>
+                                                            <span ng-show="sortKey == 'PROFIT_LOSS' && sortReverse" class="fa fa-caret-up"></span>
+                                                        </a>
+                                                    </th>
+                                                    <th>
+                                                        <a href="#" ng-click="sort('CRDR')">
+                                                            CR/DR
+                                                            <span ng-show="sortKey == 'CRDR' && !sortReverse" class="fa fa-caret-down"></span>
+                                                            <span ng-show="sortKey == 'CRDR' && sortReverse" class="fa fa-caret-up"></span>
+                                                        </a>
+                                                    </th>
+                                                    <th style="text-align:center;"><a>Action</a></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr dir-paginate="t in Trades|orderBy:sortKey:sortReverse|filter:search|itemsPerPage:pagesize">
+                                                    <td>
+                                                        {{t.CLIENT_CODE}}
+                                                    </td>
+                                                    <td>
+                                                        {{t.CUSTOMER_NAME}}
+                                                    </td>
+                                                    <td>
+                                                        {{t.INVESTMENT_AMOUNT}}
+                                                    </td>
+                                                    <td>
+                                                        {{t.PLAN_NAME}}
+                                                    </td>
+                                                    <td>
+                                                        <span ng-if="t.PROFIT_LOSS < 0">{{t.PROFIT_LOSS}}<i class="fa fa-arrow-down" style="color:Red;" aria-hidden="true"></i></span>
+                                                        <span ng-if="t.PROFIT_LOSS > 0">{{t.PROFIT_LOSS}}<i class="fa fa-arrow-up" style="color:green;" aria-hidden="true"></i></span>
+                                                        <span ng-if="t.PROFIT_LOSS == 0">{{t.PROFIT_LOSS}}</span>
+                                                    </td>
+                                                    
+                                                    <td>
+                                                        <input  type="text" maxlength="8" ng-model="t.CRDR" ng-mode placeholder="CR/DR">
+                                                    </td>
+                                                    <td align="center">
+                                                        @*<a href=""><i class="fa fa-floppy-o" aria-hidden="true" title="Save/Update" ng-click="AddUpdate($index)"></i></a>*@
+                                                        <input type="submit" id="btnUpdate" class="btn btn-default" value="Update" ng-click="AddUpdate($index)" />
+
+                                                        @*<a href=""><i class="fa fa-trash-o" aria-hidden="true" ng-click="Delete(cl)"></i></a>*@
+                                                        @* <a href="~/Reports/Viewer/Report.aspx?ID={{c.ID}}&TaxDepartment=true"><i class="fa fa-download" aria-hidden="true"></i></a>*@
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">
+                                        Total Records : <a>{{Trades.length}}</a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6" style="text-align: right;">
+                                    <div class="dataTables_paginate paging_simple_numbers">
+                                        <dir-pagination-controls max-size="10" direction-links="true" boundary-links="true"></dir-pagination-controls>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @Html.Hidden("ID")
+                </div>
+            </div>
+        </div>
+        <!--bagets-->
+    </div>
+</div>
+<!--inner block end here-->

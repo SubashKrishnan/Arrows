@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Web;
 namespace DataBaseClass
 {
-    public class Common
+    public static class Common
     {
         #region Private Variables
         private static String uploadPath = string.Empty;
@@ -19,11 +15,11 @@ namespace DataBaseClass
         private static String networkPassword = string.Empty;
         #endregion
         #region Public Properties
-        public static Int32 nLimit1 = 25;
-        public static Int32 nLimit2 = 40;
-        public static Int32 nLimit3 = 120;
-        public static Int32 nLimit4 = 32;
-        public static Int32 nLimit5 = 12;
+        private readonly static Int32 nLimit1 = 25;
+        private readonly static Int32 nLimit2 = 40;
+        private readonly static Int32 nLimit3 = 120;
+        private readonly static Int32 nLimit4 = 32;
+        private readonly static Int32 nLimit5 = 12;
         public static String UploadPath
         {
             get { return uploadPath; }
@@ -56,7 +52,6 @@ namespace DataBaseClass
         public static String RemoveHTMLTags(String sText)
         {
             return (Regex.Replace(sText, @"<[^>]*>", String.Empty)).Trim();
-            ;
         }
         public static String GetImageName(string userName)
         {
@@ -104,7 +99,6 @@ namespace DataBaseClass
                     }
                     if (value.ToString().Trim().IndexOfAny(anyOf) > 0)
                     {
-                        //value = DateTime.Parse(value.ToString()).ToString("yyyyMMdd");
                         DateTime _EndDateTime = DateTime.ParseExact(value.ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
                         value = _EndDateTime.ToString("yyyyMMdd");
                     }

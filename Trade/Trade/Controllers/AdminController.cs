@@ -1,9 +1,7 @@
 ﻿using DataBaseClass;
 using System;
-using System.Data;
 using System.Web;
 using System.Web.Mvc;
-using Trade.Models;
 namespace Trade.Controllers
 {
     public class AdminController : Controller
@@ -11,6 +9,7 @@ namespace Trade.Controllers
         #region  Declarations
         #endregion
         #region Action Results
+        [HttpGet]
         public ActionResult Index()
         {
             if (DataBaseClass.Global.IntLoginID == 0)
@@ -19,7 +18,26 @@ namespace Trade.Controllers
             }
             return View();
         }
+        [HttpGet]
         public ActionResult Customer()
+        {
+            if (DataBaseClass.Global.IntLoginID == 0)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            return View();
+        }
+        [HttpGet]
+        public ActionResult Client()
+        {
+            if (DataBaseClass.Global.IntLoginID == 0)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            return View();
+        }
+        [HttpGet]
+        public ActionResult Trade()
         {
             if (DataBaseClass.Global.IntLoginID == 0)
             {
@@ -43,6 +61,7 @@ namespace Trade.Controllers
         }
         #endregion
         #region  Methods
+        [HttpPost]
         public bool ExpireCookie()
         {
             try
@@ -53,8 +72,10 @@ namespace Trade.Controllers
                 for (int i = 0; i < limit; i++)
                 {
                     cookieName = Request.Cookies[i].Name;
-                    aCookie = new HttpCookie(cookieName);
-                    aCookie.Expires = DateTime.Now.AddDays(-1);
+                    aCookie = new HttpCookie(cookieName)
+                    {
+                        Expires = DateTime.Now.AddDays(-1)
+                    };
                     System.Web.HttpContext.Current.Response.Cookies.Add(aCookie);
                 }
                 if (Request.Cookies["StockOrion"] != null)

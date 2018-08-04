@@ -5,17 +5,14 @@ namespace Trade.ApiAuth
     public class ApiSecurity
     {
         #region  Declarations
-        private LoginModel objClass = new LoginModel();
-        private DataTable dt = new DataTable();
-        private DataSet ds = new DataSet();
+        private readonly LoginModel objClass = new LoginModel();
         #endregion
         public  bool VaidateUser(string username, string password)
         {
             objClass.StrLogUserName = username;
             objClass.StrLogPassword = password;
-            dt = objClass.Login();
-            // Check if it is valid credential  
-            if (dt.Rows.Count > 0)//CheckUserInDB(username, password))  
+            DataTable dt = objClass.Login();
+            if (dt.Rows.Count > 0)   
             {
                 return true;
             }

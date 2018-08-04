@@ -3,7 +3,7 @@ using System.Net.Http.Headers;
 using System.Web.Http.Filters;
 namespace Trade.ApiAuth
 {
-    public class CacheFilter : ActionFilterAttribute
+    public class CacheFilterAttribute : ActionFilterAttribute
     {
         public int TimeDuration { get; set; }
         public override void OnActionExecuted(HttpActionExecutedContext actionExecutedContext)

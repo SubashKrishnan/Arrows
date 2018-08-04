@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
 namespace DataBaseClass
 {
@@ -55,19 +51,16 @@ namespace DataBaseClass
         public static String StrLoginUserName
         {
             get { return (HttpContext.Current == null || HttpContext.Current.Session["StrLoginUserName"] == null) ? String.Empty : Convert.ToString(HttpContext.Current.Session["StrLoginUserName"]); }
-            //Updated on 12-Jan-2012
             set { if (HttpContext.Current != null) HttpContext.Current.Session["StrLoginUserName"] = value; }
         }
         public static String StrLoginName
         {
             get { return (HttpContext.Current == null || HttpContext.Current.Session["StrLoginName"] == null) ? String.Empty : Convert.ToString(HttpContext.Current.Session["StrLoginName"]); }
-            //Updated on 12-Jan-2012
             set { if (HttpContext.Current != null) HttpContext.Current.Session["StrLoginName"] = value; }
         }
         public static String StrGroupName
         {
             get { return (HttpContext.Current == null || HttpContext.Current.Session["StrGroupName"] == null) ? String.Empty : Convert.ToString(HttpContext.Current.Session["StrGroupName"]); }
-            //Updated on 12-Jan-2012
             set { if (HttpContext.Current != null) HttpContext.Current.Session["StrGroupName"] = value; }
         }
         public static String StrLoginUserFirstName

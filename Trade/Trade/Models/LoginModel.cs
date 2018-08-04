@@ -8,7 +8,6 @@ namespace Trade.Models
     {
         DBConfiguration dbcon = new DBConfiguration();
         #region Variables
-        DataTable dt = new DataTable();
         public string StrLogEmail { get; set; }
         public string StrLogUserName { get; set; }
         public string StrLogPassword { get; set; }
@@ -20,7 +19,7 @@ namespace Trade.Models
         #region Methods
         public DataTable Login()
         {
-            DataSet ds = null;
+            DataSet ds = new DataSet();
             try
             {
                 SqlParameter[] objParam = new SqlParameter[6];
@@ -36,8 +35,10 @@ namespace Trade.Models
         }
         public DataTable GetDetailsByID()
         {
+            DataTable dt = new DataTable();
             try
             {
+               
                 dt = dbcon.Execute_Query("UPDATE USERS SET LAST_LOGIN=GETDATE() WHERE ID=" + IntLoginID + "; select US.ID,US.NAME,US.USERNAME,US.MOBILE,US.LAST_LOGIN,US.ISACTIVE from USERS  US where US.ID=" + IntLoginID + "", "USERS").Tables[0];
             }
             catch (Exception ex)

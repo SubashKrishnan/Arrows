@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web.Http;
 using System.Web.Http.WebHost;
 using Trade.ApiAuth;
@@ -18,11 +16,6 @@ namespace Trade
                     new Lazy<HttpControllerRouteHandler>(() => new SessionHttpControllerRouteHandler(), true));
             }
             config.MapHttpAttributeRoutes();
-            //config.Routes.MapHttpRoute(
-            //    name: "DefaultApi",
-            //    routeTemplate: "api/{controller}/{id}",
-            //    defaults: new { id = RouteParameter.Optional }
-            //);
             config.Routes.MapHttpRoute("DefaultApiWithId", "Api/{controller}/{id}", new { id = RouteParameter.Optional }, new { id = @"\d+" });
             config.Routes.MapHttpRoute("DefaultApiWithAction", "Api/{controller}/{action}");
         }
